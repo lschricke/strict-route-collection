@@ -24,7 +24,7 @@ class StrictRouteCollection extends RouteCollection
         // and we are not re-adding the routes again
         $collection->remove($collection->all());
 
-        // call parent method with empty collection since to merge the collection's resources
+        // call parent method with empty collection to merge the collection's resources
         parent::addCollection($collection);
     }
 
