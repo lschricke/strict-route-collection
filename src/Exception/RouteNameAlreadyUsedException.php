@@ -37,8 +37,7 @@ class RouteNameAlreadyUsedException extends \LogicException
 
         $message = sprintf("Cannot add the route [path: %s, host: %s, methods: %s] with the name '%s'
                 as it is already used by the route [path: %s, host: %s, methods: %s].",
-            $route->getPath(), $host, $methods,
-            $name,
+            $route->getPath(), $host, $methods, $name,
             $routeWithSameName->getPath(), $hostRouteWithSameName, $methodsRouteWithSameName
         );
 
