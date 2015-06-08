@@ -1,11 +1,8 @@
 {
-    "name": "lschricke/strict-route-collection",
+    "name": "lschricke/symfony-strict-route-collection",
     "description": "This package offers a stricter version of the Symfony\\Component\\Routing\\RouteCollection where you cannot add a Route with a name that is already registered, preventing you to overwrite an existing Route name by mistake.",
     "require": {
         "symfony/routing": "~2.3"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.0"
     },
     "license": "MIT",
     "authors": [
@@ -15,6 +12,6 @@
         }
     ],
     "autoload": {
-        "psr-4": {"StrictRouteCollection\\": "src/"}
+        "psr-4": {"Lschricke\\SymfonyStrictRouteCollection\\": "src/"}
     }
 }

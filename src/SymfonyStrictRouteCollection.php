@@ -1,18 +1,18 @@
 <?php
 
-namespace StrictRouteCollection;
+namespace Lschricke\SymfonyStrictRouteCollection;
 
-use StrictRouteCollection\Exception\RouteNameAlreadyUsedException;
+use Lschricke\SymfonyStrictRouteCollection\Exception\RouteNameAlreadyUsedException;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
  * {@inheritdoc}
  *
- * This only difference with symfony's RouteCollection is that this does not let you add a Route with a name
+ * This only difference with Symfony's RouteCollection is that this does not let you add a Route with a name
  * that is already used in the collection.
  */
-class StrictRouteCollection extends RouteCollection
+class SymfonyStrictRouteCollection extends RouteCollection
 {
     public function addCollection(RouteCollection $collection)
     {
@@ -30,9 +30,8 @@ class StrictRouteCollection extends RouteCollection
 
     public function add($name, Route $route)
     {
-        if (null !== $this->get($name)) {
-            throw new RouteNameAlreadyUsedException(sprintf("You are trying to register a route with the name '%s' (path '%s'), which is already used by another route (path '%s')",
-                $name, $route->getPath(), $this->get($name)->getPath()));
+        if (null !== $routeWithSameName = $this->get($name)) {
+            throw new RouteNameAlreadyUsedException($route, $name, $routeWithSameName);
         }
 
         parent::add($name, $route);

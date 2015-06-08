@@ -2,18 +2,18 @@
 
 namespace StrictRouteCollection\Tests;
 
+use Lschricke\SymfonyStrictRouteCollection\SymfonyStrictRouteCollection;
 use PHPUnit_Framework_TestCase;
-use StrictRouteCollection\StrictRouteCollection;
 use Symfony\Component\Routing\Route;
 
-class StrictRouteCollectionTest extends PHPUnit_Framework_TestCase
+class SymfonyStrictRouteCollectionTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException \StrictRouteCollection\Exception\RouteNameAlreadyUsedException
+     * @expectedException Lschricke\SymfonyStrictRouteCollection\Exception\RouteNameAlreadyUsedException
      */
     public function testException()
     {
-        $routeCollection = new StrictRouteCollection();
+        $routeCollection = new SymfonyStrictRouteCollection();
         $route = new Route('/');
 
         $routeCollection->add('same_route_name', $route);
@@ -22,7 +22,7 @@ class StrictRouteCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testNormalBehavior()
     {
-        $routeCollection = new StrictRouteCollection();
+        $routeCollection = new SymfonyStrictRouteCollection();
         $route = new Route('/');
 
         $routeCollection->add('one_route_name', $route);
