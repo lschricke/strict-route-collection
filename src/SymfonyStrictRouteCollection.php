@@ -22,7 +22,7 @@ class SymfonyStrictRouteCollection extends RouteCollection
 
         // remove all the routes so that we have an empty collection when calling parent method
         // and we are not re-adding the routes again
-        $collection->remove($collection->all());
+        $collection->remove(array_keys($collection->all()));
 
         // call parent method with empty collection to merge the collection's resources
         parent::addCollection($collection);

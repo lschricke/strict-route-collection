@@ -30,4 +30,32 @@ class SymfonyStrictRouteCollectionTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(2, $routeCollection->count());
     }
+
+    /**
+     * @expectedException Lschricke\SymfonyStrictRouteCollection\Exception\RouteNameAlreadyUsedException
+     */
+    public function testAddCollectionException()
+    {
+        $routeCollectionA = new SymfonyStrictRouteCollection();
+        $routeCollectionB = new SymfonyStrictRouteCollection();
+        $route = new Route('/');
+
+        $routeCollectionA->add('same_route_name', $route);
+        $routeCollectionB->add('same_route_name', $route);
+
+        $routeCollectionA->addCollection($routeCollectionB);
+    }
+
+    public function testAddCollectionNormalBehavior()
+    {
+        $routeCollectionA = new SymfonyStrictRouteCollection();
+        $routeCollectionB = new SymfonyStrictRouteCollection();
+        $route = new Route('/');
+
+        $routeCollectionA->add('same_route_name', $route);
+        $routeCollectionB->add('another_route_name', $route);
+
+        $routeCollectionA->addCollection($routeCollectionB);
+        $this->assertEquals(2, $routeCollectionA->count());
+    }
 }
