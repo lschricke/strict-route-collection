@@ -1,15 +1,14 @@
 <?php
 
-namespace StrictRouteCollection\Tests;
+namespace Lschricke\SymfonyStrictRouteCollection\Tests;
 
 use Lschricke\SymfonyStrictRouteCollection\SymfonyStrictRouteCollection;
-use PHPUnit_Framework_TestCase;
 use Symfony\Component\Routing\Route;
 
-class SymfonyStrictRouteCollectionTest extends PHPUnit_Framework_TestCase
+class SymfonyStrictRouteCollectionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Lschricke\SymfonyStrictRouteCollection\Exception\RouteNameAlreadyUsedException
+     * @expectedException \Lschricke\SymfonyStrictRouteCollection\Exception\RouteNameAlreadyUsedException
      */
     public function testException()
     {
@@ -32,7 +31,7 @@ class SymfonyStrictRouteCollectionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Lschricke\SymfonyStrictRouteCollection\Exception\RouteNameAlreadyUsedException
+     * @expectedException \Lschricke\SymfonyStrictRouteCollection\Exception\RouteNameAlreadyUsedException
      */
     public function testAddCollectionException()
     {
